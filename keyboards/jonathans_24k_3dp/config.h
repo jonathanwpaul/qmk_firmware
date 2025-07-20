@@ -1,3 +1,4 @@
 // #define FONT_SCALE 2
 // #define OLED_FONT_WIDTH 12
 // #define OLED_FONT_HEIGHT 16
+#define PIMORONI_TRACKBALL_ADDRESS 0x0A
