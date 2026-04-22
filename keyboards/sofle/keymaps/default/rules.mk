@@ -1,4 +1,6 @@
 TRI_LAYER_ENABLE = yes
-CONSOLE_ENABLE = yes
-POINTING_DEVICE_DRIVER = pimoroni_trackball
+
 POINTING_DEVICE_ENABLE = yes
+POINTING_DEVICE_DRIVER = pimoroni_trackball
+
+WPM_ENABLE = yes
