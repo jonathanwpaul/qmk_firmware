@@ -581,36 +581,27 @@ static report_mouse_t last_mouse_report   = {0};
 static bool           is_scrolling        = false;
 
 report_mouse_t smooth_mouse_movement(report_mouse_t mouse_report) {
-    // Linear interpolation and ease-in-out
-    static fract8 fract = 0.5;
-    int8_t        x     = 0;
-    int8_t        y     = 0;
-    int8_t        h     = 0;
-    int8_t        v     = 0;
+    // Weighted average: 75% current + 25% previous, signed arithmetic
+    mouse_xy_report_t sx = (mouse_xy_report_t)(((int16_t)mouse_report.x * 3 + last_mouse_report.x) / 4);
+    mouse_xy_report_t sy = (mouse_xy_report_t)(((int16_t)mouse_report.y * 3 + last_mouse_report.y) / 4);
 
     if (!is_scrolling) {
-        x = ease8InOutApprox(lerp8by8(last_mouse_report.x, mouse_report.x, fract));
-        y = ease8InOutApprox(lerp8by8(last_mouse_report.y, mouse_report.y, fract));
+        mouse_report.x = sx;
+        mouse_report.y = sy;
     } else {
-        h = ease8InOutApprox(lerp8by8(last_mouse_report.x, mouse_report.x, fract));
-        v = ease8InOutApprox(lerp8by8(last_mouse_report.y, mouse_report.y, fract));
+        mouse_report.h = sx;
+        mouse_report.v = sy;
+        mouse_report.x = 0;
+        mouse_report.y = 0;
     }
-
-    // update the new smoothed report
-    mouse_report.x = x;
-    mouse_report.y = y;
-    mouse_report.h = h;
-    mouse_report.v = v;
-
     return mouse_report;
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-
-    if (has_mouse_report_changed(&last_mouse_report, &mouse_report)) {
+    report_mouse_t smoothed = smooth_mouse_movement(mouse_report);
+    if (has_mouse_report_changed(&last_mouse_report, &smoothed)) {
         last_mouse_activity = timer_read32();
-        memcpy(&last_mouse_report, &mouse_report, sizeof(mouse_report));
+        memcpy(&last_mouse_report, &smoothed, sizeof(smoothed));
     }
-
-    return smooth_mouse_movement(mouse_report);
+    return smoothed;
 }
