@@ -7,11 +7,6 @@
 #define TRI_LAYER_UPPER_LAYER 3
 #define TRI_LAYER_ADJUST_LAYER 4
 
-/* clear default encoder def */
-#undef TAP_CODE_DELAY
-
-/* encoder support */
-#define TAP_CODE_DELAY 100
 
 /* trackball */
 #define SPLIT_POINTING_ENABLE
