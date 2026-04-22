@@ -7,7 +7,6 @@
 #define TRI_LAYER_UPPER_LAYER 3
 #define TRI_LAYER_ADJUST_LAYER 4
 
-
 /* trackball */
 #define SPLIT_POINTING_ENABLE
 #define POINTING_DEVICE_ROTATION_90
@@ -17,3 +16,7 @@
 /* WPM */
 #define SPLIT_WPM_ENABLE
 #define SPLIT_OLED_ENABLE
+
+/* ENCODER */
+#define ENCODERS_A_PINS { F5 }
+#define ENCODERS_B_PINS { F4 }
