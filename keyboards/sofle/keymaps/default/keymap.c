@@ -36,10 +36,8 @@ enum custom_keycodes {
     KC_ADJUST,
     KC_PRVWD,
     KC_NXTWD,
-    KC_LSTRT,
-    KC_LEND,
-    KC_DLINE,
     KC_MOUSE,
+    KC_UNDSC,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -60,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
         KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
 
-                   KC_LCTL, KC_LALT, KC_LGUI, KC_LOWER, KC_ENT,        KC_SPC,  KC_RAISE, KC_RCTL, KC_RALT, KC_RGUI
+                   KC_LSFT, KC_LALT, KC_LGUI, KC_LOWER, KC_ENT,        KC_SPC,  KC_RAISE, KC_RSFT, KC_RALT, KC_RGUI
     ),
     // clang-format on
 
@@ -83,31 +81,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
         KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                      KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                KC_LCTL, KC_LALT, KC_LGUI, KC_LOWER, KC_ENT,        KC_SPC,  KC_RAISE, KC_RSFT, KC_RALT, KC_RCTL
 
-                   KC_LCTL, KC_LALT, KC_LGUI, KC_LOWER, KC_ENT,        KC_SPC,  KC_RAISE, KC_RGUI, KC_RALT, KC_RCTL
     ),
     // clang-format on
 
     // clang-format off
-    // [_LOWER] = LAYOUT(/* LOWER
-    //     |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    //     | F1   | F2   | F3   | F4   | F5   | F6   |                    | F7   | F8   | F9   | F10  | F11  | F12  |
-    //     |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    //     |  `   |  1   |  2   |  3   |  4   |  5   |                    |  6   |  7   |  8   |  9   |  0   |  `   |
-    //     |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-    //     |MOUSE |  !   |  @   |  #   |  $   |  %   |-------.    ,-------|  ^   |  &   |  *   |  (   |  )   |  |   |
-    //     |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
-    //     |LSFT  |  =   |  -   |  +   |  {   |  }   |-------|    |-------|  [   |  ]   |  ;   |  :   |  \   |LSFT |
-    //     `-----------------------------------------/       /     \      \-----------------------------------------'
-    //                |     |     |     |LOWER | ENT          \ SPC  |RAISE|     |     |
-    //     */
-    //     KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    //     KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
-    //     KC_MOUSE, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-    //     KC_LSFT,  KC_EQL,  KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, KC_MUTE,   XXXXXXX, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, KC_LSFT,
-    //
-    //                 _______,_______,_______,_______,_______,                       _______,_______,_______,_______,_______
-    // ),
+
     [_LOWER] = LAYOUT(/* LOWER
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
         | F1   | F2   | F3   | F4   | F5   | F6   |                    | F7   | F8   | F9   | F10  | F11  | F12  |
@@ -120,10 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         `-----------------------------------------/       /     \      \-----------------------------------------'
                    |     |     |     |LOWER | ENT          \ SPC  |RAISE|     |     |
         */
-        KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,
-        KC_GRV,   _______, _______, KC_LCBR, KC_RCBR, _______,                     KC_PPLS, KC_P7,  KC_P8,  KC_P9,  KC_PAST, _______,
-        KC_MOUSE, KC_NUM,  _______, KC_LBRC, KC_RBRC, _______,                     KC_MINS, KC_P4,  KC_P5,  KC_P6,  KC_PSLS, KC_PENT,
-        KC_LSFT,  _______, _______, KC_LPRN, KC_RPRN, _______, KC_MUTE,   XXXXXXX, _______,  KC_P1,  KC_P2,  KC_P3,  KC_CAPS, _______,
+        KC_F12,   KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,
+        KC_GRV,   _______, KC_PPLS,  KC_EQL,  _______, KC_LCBR,                     KC_RCBR, KC_P7,  KC_P8,  KC_P9,  KC_PAST, KC_BSPC,
+        KC_MOUSE, _______, KC_MINS,  _______, _______, KC_LBRC,                     KC_RBRC, KC_P4,  KC_P5,  KC_P6,  KC_PSLS, KC_PENT,
+        KC_LSFT,  _______, KC_UNDSC, KC_COLN, _______, KC_LPRN, KC_MUTE,   XXXXXXX, KC_RPRN, KC_P1,  KC_P2,  KC_P3,  KC_CAPS, KC_NUM,
 
                     _______,_______,_______,_______,_______,                       _______,_______,KC_PEQL, KC_P0, KC_PDOT
     ),
@@ -133,9 +113,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE] = LAYOUT(
 
         KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,                          KC_F6,    KC_F7,    KC_F8,   KC_F9,    KC_F10,   KC_F11,
-        _______, _______, _______, KC_UP,   _______,  _______,                        _______,  KC_PRVWD, KC_PGUP,   KC_NXTWD, _______, KC_BSPC,
-        KC_LALT, KC_LCTL, KC_LEFT, KC_DOWN, KC_RIGHT, _______,                        _______,  KC_HOME,  KC_PGDN, KC_END,  KC_DEL,   KC_BSPC,
-        _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, _______, KC_MUTE,      _______, KC_DEL,   KC_HOME,  _______, _______,   _______,  _______,
+        _______, _______, _______, KC_UP,   _______,  _______,                        _______,  KC_PRVWD, KC_UP,   KC_NXTWD, _______, KC_BSPC,
+        KC_LALT, KC_LCTL, KC_LEFT, KC_DOWN, KC_RIGHT, _______,                        _______,  KC_LEFT,  KC_DOWN, KC_RIGHT, KC_DEL,   KC_BSPC,
+        _______, _______, _______, _______, _______, _______, KC_MUTE,      _______, KC_DEL,   KC_HOME,  _______, _______,   _______,  _______,
 
                    _______,_______,_______,_______,_______,                           _______,_______,_______,_______,_______
     ),
@@ -146,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
         |      |      |      |      |      |      |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-        |RST  |      |QWERTY|COLEMAK|      |      |                    |      |      |      |      |      |      |
+        |RST   |      |      |      |      |      |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
         |      |      |MACWIN|      |      |      |-------.    ,-------|      |VOLD |MUTE |VOLU |      |      |
         |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------|
@@ -155,12 +135,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           |     |     |     |     | ENT          \ SPC  |     |     |     |
         */
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DM_REC1, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, DM_RSTP, CG_TOGG, XXXXXXX, DM_PLY1,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE,     XXXXXXX,XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-
                    _______,_______,_______,_______,_______,                      _______,_______,_______,_______,_______
     ),
+
     // clang-format on
 
     // clang-format off
@@ -216,6 +196,15 @@ static void print_status_narrow(void) {
             oled_write_ln_P(PSTR("Undef"), false);
     }
     oled_write_P(PSTR("\n\n"), false);
+
+    if (keymap_config.swap_lctl_lgui) {
+        oled_write_ln_P(PSTR("MAC"), false);
+    } else {
+        oled_write_ln_P(PSTR("WIN"), false);
+    }
+
+    oled_write_P(PSTR("\n\n"), false);
+
     led_t led_usb_state = host_keyboard_led_state();
     oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
     oled_write_ln_P(PSTR("NUMLK"), led_usb_state.num_lock);
@@ -387,88 +376,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case KC_LSTRT:
-            if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    // CMD-arrow on Mac, but we have CTL and GUI swapped
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_LEFT);
-                } else {
-                    register_code(KC_HOME);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_LEFT);
-                } else {
-                    unregister_code(KC_HOME);
-                }
-            }
-            break;
-        case KC_LEND:
-            if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    // CMD-arrow on Mac, but we have CTL and GUI swapped
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_RIGHT);
-                } else {
-                    register_code(KC_END);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_RIGHT);
-                } else {
-                    unregister_code(KC_END);
-                }
-            }
-            break;
-        case KC_DLINE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_BSPC);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_BSPC);
-            }
-            break;
-        case KC_COPY:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_C);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_C);
-            }
-            return false;
-        case KC_PASTE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_V);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_V);
-            }
-            return false;
-        case KC_CUT:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_X);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_X);
-            }
-            return false;
-            break;
-        case KC_UNDO:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_Z);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_Z);
-            }
-            return false;
         case KC_MOUSE:
             if (record->event.pressed) {
                 layer_on(_MOUSE);
@@ -476,6 +383,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_MOUSE);
             }
             return false;
+        case KC_UNDSC:
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LSFT));
+                register_code(KC_MINS);
+            } else {
+                unregister_mods(mod_config(MOD_LSFT));
+                unregister_code(KC_MINS);
+            }
+            break;
     }
     return true;
 }
