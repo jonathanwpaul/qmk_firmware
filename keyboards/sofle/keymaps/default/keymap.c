@@ -21,7 +21,7 @@
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
-    _COLEMAK,
+    _GAMING,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -30,7 +30,7 @@ enum sofle_layers {
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
-    KC_COLEMAK,
+    KC_GAMING,
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
@@ -64,23 +64,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format on
 
     // clang-format off
-    [_COLEMAK] = LAYOUT(/* COLEMAK
+    [_GAMING] = LAYOUT(/* GAMING (ESDF shifted QWERTY)
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-        |  `   |  1   |  2   |  3   |  4   |  5   |                    |  6   |  7   |  8   |  9   |  0   |  `   |
+        | Esc  |  `   |  1   |  2   |  3   |  4   |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-        | Esc  |  Q   |  W   |  F   |  P   |  G   |                    |  J   |  L   |  U   |  Y   |  ;   | Bspc |
+        | Tab  |  Q   |  W   |  E   |  R   |  T   |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-        | Tab  |  A   |  R   |  S   |  T   |  D   |-------.    ,-------|  H   |  N   |  E   |  I   |  O   |  '   |
+        |LSFT  |  A   |  S   |  D   |  F   |  G   |-------.    ,-------|      |      |      |      |      |      |
         |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
-        |LSFT  |  Z   |  X   |  C   |  V   |  B   |-------|    |-------|  K   |  M   |  ,   |  .   |  /   |RSFT |
+        |LCTL  |  Z   |  X   |  C   |  V   |  B   |-------|    |-------|      |      |      |      |      |      |
         `-----------------------------------------/       /     \      \-----------------------------------------'
-                   |LGUI |LALT |LCTL |LOWER | ENT          \ SPC  |RAISE|RCTL |RALT |RGUI
+                   |LGUI |LALT |LCTL |LOWER | SPC          \ ENT  |RAISE|     |     |
         */
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
-        KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-        KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                      KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
-                KC_LCTL, KC_LALT, KC_LGUI, KC_LOWER, KC_ENT,        KC_SPC,  KC_RAISE, KC_RALT, KC_RALT, KC_RCTL
+        KC_ESC,  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_MPLY,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                KC_LGUI, KC_LALT, KC_LCTL, KC_LOWER, KC_SPC,        KC_ENT,  KC_RAISE, XXXXXXX, XXXXXXX, XXXXXXX
 
     ),
     // clang-format on
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
         |      |      |      |      |      |      |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-        |RST   |      |      |      |      |      |                    |      |      |      |      |      |      |
+        |RST   |QWRTY|GAMING|      |      |      |                    |      |      |      |      |      |      |
         |------+------+------+------+------+------|                    |------+------+------+------+------+------|
         |      |      |MACWIN|      |      |      |-------.    ,-------|      |VOLD |MUTE |VOLU |      |      |
         |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------|
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           |     |     |     |     | ENT          \ SPC  |     |     |     |
         */
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DM_REC1, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_QWERTY, KC_GAMING, XXXXXXX, DM_REC1, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, DM_RSTP, CG_TOGG, XXXXXXX, DM_PLY1,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE,     XXXXXXX,XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
                    _______,_______,_______,_______,_______,                      _______,_______,_______,_______,_______
@@ -175,7 +175,7 @@ static void print_status_narrow(void) {
     oled_write_P(PSTR("\n\n"), false);
     // Print current layer
     switch (get_highest_layer(layer_state)) {
-        case _COLEMAK:
+        case _GAMING:
         case _QWERTY:
             oled_write_P(PSTR("BASE\n"), false);
             break;
@@ -307,9 +307,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_QWERTY);
             }
             return false;
-        case KC_COLEMAK:
+        case KC_GAMING:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK);
+                set_single_persistent_default_layer(_GAMING);
             }
             return false;
         case KC_LOWER:
@@ -410,6 +410,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][2][NUM_DIRECTIONS] = {
-    [_QWERTY] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}, [_LOWER] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_RAISE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_ADJUST] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_MOUSE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
+    [_QWERTY] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}, [_GAMING] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}, [_LOWER] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_RAISE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_ADJUST] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)}, [_MOUSE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
 };
 #endif
